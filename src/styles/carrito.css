@@ -1,146 +1,49 @@
-:root {
-    --fondo-barras: #D8829D;
-    --fondo-base: #d8c2ad;
-    --texto-principal: #FFF5E1;
-    --texto-secundario: #c5bab07b;
-    --hover: #5D4037;
-}
+/* El Header y el Footer se estilan en inicio.css, que Carrito.jsx también importa */
 
-/* header */
-
-header.nav-header{
-    background-color: var(--fondo-barras);
-    padding: 15px 30px;
-}
-
-.nav-contenedor{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-logo{
-    display: flex;
-    align-items: center;
-    object-fit: contain;
-    gap: 5px
-}
-
-.header-logo h1.titulo{
-    margin: 0;
-}
-
-.header-logo p.eslogan-header{
-    margin: 2px 0 0 0;
-}
-
-.logo-img{
-    width: 60px;
-    height: auto;
-    object-fit: contain;
-}
-
-h1.titulo-header{
-    margin: 0;
-    font-family: 'Pacifico', cursive;
-    color: var(--texto-principal);
-    font-size: 28px;
-}
-
-p.eslogan-header{
-    margin: 4px 0 0 0;
-    font-family: 'Lato', sans-serif;
-    color: var(--texto-principal);
-}
-
-ul.navbar-nav{
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
+/* ---------- LAYOUT ---------- */
+main {
+    display: block;
     padding: 0;
-}
-
-li.item-nav a{
-    color: var(--texto-principal);
-    text-decoration: none;
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-li.item-nav a:hover{
-    color: var(--hover);
-}
-
-/* cuerpo */
-
-html, body{
-    height: 100%;
-    margin: 0;
-}
-
-body{
-    display: flex;
-    flex-direction: column;
-}
-
-main{
-    flex: 1;
     background-color: var(--fondo-base);
 }
 
-.contenedor-principal{
-    padding: 20px 40px;
-}
-
-.portada-titulo{
+.portada-titulo {
     font-family: 'Lato', sans-serif;
     color: #4a3b32;
     margin-top: 0;
     margin-bottom: 25px;
 }
 
-.carrito-grid{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-.card-carrito{
+/* ---------- TABLA ---------- */
+.card-carrito {
     background-color: var(--texto-principal);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 8px 20px rgba(93, 64, 55, 0.25);
 }
 
-.tabla-carrito{
-    width: 100%;
-    border-collapse: collapse;
+.tabla-carrito {
     font-family: 'Comic Neue', sans-serif;
     font-size: 16px;
+    --bs-table-bg: transparent;
 }
 
-.tabla-carrito th{
+.tabla-carrito th {
     border-bottom: 2px solid var(--fondo-barras);
-    padding: 12px 8px;
     color: var(--hover);
-    text-align: left;    
+    text-align: left;
+    white-space: nowrap;
 }
 
 .tabla-carrito td {
-    padding: 15px 8px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .campo-cantidad {
-    width: 50px;
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    width: 70px;
 }
 
+/* ---------- RESUMEN ---------- */
 .card-resumen {
     background-color: var(--texto-principal);
     border-radius: 10px;
@@ -163,28 +66,15 @@ main{
     margin: 0 0 8px 0;
 }
 
-.cupon-box {
-    display: flex;
-    gap: 8px;
-}
-
-.cupon-box input {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
 .separador {
     border: 0;
     border-top: 1px solid var(--fondo-barras);
     margin: 10px 0;
     width: 100%;
+    opacity: 1;
 }
 
 .fila-resumen {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 12px;
     font-family: 'Comic Neue', sans-serif;
     font-size: 16px;
@@ -198,65 +88,24 @@ main{
 }
 
 .acciones-carrito {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     margin-top: 15px;
 }
 
-.acciones-carrito button, .cupon-box button, .btn-eliminar {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+/* ---------- BOTONES ---------- */
+.acciones-carrito .btn,
+.cupon-box .btn,
+.btn-eliminar {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
-    cursor: pointer;
+    border: none;
     transition: background-color 0.2s;
 }
 
 .btn-confirmar { background-color: var(--hover); color: white; }
-.btn-confirmar:hover { background-color: #422d27; }
+.btn-confirmar:hover { background-color: #422d27; color: white; }
 .btn-vaciar { background-color: #e0a3b5; color: var(--hover); }
-.btn-vaciar:hover { background-color: #d18ba2; }
+.btn-vaciar:hover { background-color: #d18ba2; color: var(--hover); }
 #btnAplicarCupon { background-color: var(--fondo-barras); color: white; }
-#btnAplicarCupon:hover { background-color: #c46b86; }
-.btn-eliminar { background-color: #ff6b6b; color: white; padding: 5px 10px; }
-.btn-eliminar:hover { background-color: #e65c5c; }
-
-/* footer */
-
-footer.nav-footer{
-    background-color: var(--fondo-barras);
-    padding: 15px 30px;
-}
-
-.footer-contenedor{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-texto{
-    color: var(--texto-principal);
-    text-decoration: none;
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-a.footer-link{
-    color: var(--texto-principal);
-    text-decoration: none;
-    font-family: 'Lato', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-a.footer-link:visited{
-    color: var(--texto-principal);
-}
-
-a.footer-link:hover{
-    color: var(--hover);
-    transition: color 0.3s ease;
-}
+#btnAplicarCupon:hover { background-color: #c46b86; color: white; }
+.btn-eliminar { background-color: #ff6b6b; color: white; }
+.btn-eliminar:hover { background-color: #e65c5c; color: white; }
