@@ -35,17 +35,14 @@ export default function InicioSesion() {
 
       <Header />
 
-      {/* Principal */}
       <main className="contenido-principal">
         <section className="seccion-login">
-          <h2 className="titulo-seccion">Inicio de Sesión </h2>
+          <h2 className="titulo-seccion">Inicio de Sesión</h2>
           <p className="descripcion">Ingresa a tu cuenta.</p>
 
-          {/* Formulario */}
           <form className="formulario-login" onSubmit={handleSubmit}>
             <div className="campo-formulario">
               <label className="etiqueta" htmlFor="correo">Correo electrónico:</label>
-              <br />
               <input
                 className="campo"
                 type="email"
@@ -59,7 +56,6 @@ export default function InicioSesion() {
 
             <div className="campo-formulario">
               <label className="etiqueta" htmlFor="contrasena">Contraseña:</label>
-              <br />
               <input
                 className="campo"
                 type="password"
@@ -70,11 +66,13 @@ export default function InicioSesion() {
                 onChange={e => setContrasena(e.target.value)}
               />
             </div>
+
             <button className="boton" type="submit">Iniciar Sesión</button>
           </form>
+
           <p className="texto-registro">
-            ¿Todavia no tienes cuenta?{' '}
-            <Link className="enlace-registro" to="/usuario/registro">Regístrate aqui</Link>
+            ¿Todavía no tienes cuenta?{' '}
+            <Link className="enlace-registro" to="/usuario/registro">Regístrate aquí</Link>
           </p>
         </section>
       </main>
