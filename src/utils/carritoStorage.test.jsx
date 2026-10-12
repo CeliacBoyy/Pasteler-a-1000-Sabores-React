@@ -1,10 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import {
-  CARRITO_KEY,
-  obtenerCarrito,
-  guardarCarrito,
-  agregarAlCarrito,
-} from './carritoStorage.js';
+import {CARRITO_KEY,obtenerCarrito,guardarCarrito,agregarAlCarrito } from './carritoStorage.js';
 
 
 const torta = { codigo: 'T001', nombre: 'Torta Cuadrada de Chocolate', precio: 45000 };
