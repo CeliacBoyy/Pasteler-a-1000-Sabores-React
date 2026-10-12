@@ -6,34 +6,10 @@
     --hover: #5D4037;
 }
 
-/* ====================
-    CSS DE LOS HEADERS
-   ==================== */
-
+/* ---------- HEADER ---------- */
 header.nav-header {
     background-color: var(--fondo-barras);
     padding: 15px 30px;
-}
-
-.nav-contenedor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-logo {
-    display: flex;
-    align-items: center;
-    object-fit: contain;
-    gap: 5px;
-}
-
-.header-logo h1.titulo {
-    margin: 0;
-}
-
-.header-logo p.eslogan-header {
-    margin: 2px 0 0 0;
 }
 
 .logo-img {
@@ -56,29 +32,21 @@ p.eslogan-header {
 }
 
 ul.navbar-nav {
-    display: flex;
     gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
-li.item-nav a {
+li.item-nav a.nav-link {
     color: var(--texto-principal);
-    text-decoration: none;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
-li.item-nav a:hover {
+li.item-nav a.nav-link:hover {
     color: var(--hover);
 }
 
-/* ====================
-    CSS DE LA PORTADA
-   ==================== */
-
+/* ---------- LAYOUT ---------- */
 html, body {
     height: 100%;
     margin: 0;
@@ -92,25 +60,19 @@ body {
 main {
     flex: 1;
     background-color: var(--fondo-base);
-    display: flex;          
-    align-items: center;    
+    display: flex;
+    align-items: center;
     justify-content: center;
-    padding: 40px 20px;     
+    padding: 40px 20px;
 }
 
 .portada-contactanos {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;   
-    gap: 30px;              
     width: 100%;
-    max-width: 1100px;      
-    margin: 0 auto;
 }
 
+/* ---------- TARJETAS ---------- */
 .card-contacto-img {
-    flex: 1;
-    background-color: rgba(255, 255, 255, 0.4); 
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -123,13 +85,12 @@ main {
     width: 100%;
     height: 100%;
     max-height: 400px;
-    object-fit: cover;    
+    object-fit: cover;
     border-radius: 6px;
 }
 
 .card-contacto-info {
-    flex: 1;
-    background-color: rgba(255, 255, 255, 0.6); 
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -155,19 +116,10 @@ p.texto-contactanos {
     margin: 10px 0;
 }
 
-/* ====================
-    CSS DE LOS FOOTERS
-   ==================== */
-
+/* ---------- FOOTER ---------- */
 footer.nav-footer {
     background-color: var(--fondo-barras);
     padding: 15px 30px;
-}
-
-.footer-contenedor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .footer-texto {

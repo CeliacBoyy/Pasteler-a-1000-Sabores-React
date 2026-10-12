@@ -6,30 +6,10 @@
     --hover: #5D4037;
 }
 
+/* ---------- HEADER ---------- */
 header.nav-header {
     background-color: var(--fondo-barras);
     padding: 15px 30px;
-}
-
-.nav-contenedor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-logo {
-    display: flex;
-    align-items: center;
-    object-fit: contain;
-    gap: 5px;
-}
-
-.header-logo h1.titulo {
-    margin: 0;
-}
-
-.header-logo p.eslogan-header {
-    margin: 2px 0 0 0;
 }
 
 .logo-img {
@@ -52,25 +32,21 @@ p.eslogan-header {
 }
 
 ul.navbar-nav {
-    display: flex;
     gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
-li.item-nav a {
+li.item-nav a.nav-link {
     color: var(--texto-principal);
-    text-decoration: none;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
-li.item-nav a:hover {
+li.item-nav a.nav-link:hover {
     color: var(--hover);
 }
 
+/* ---------- LAYOUT ---------- */
 html, body {
     height: 100%;
     margin: 0;
@@ -92,19 +68,10 @@ main {
 
 section.portada-index {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.portada-contenido {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 30px;
-}
-
+/* ---------- TARJETAS ---------- */
 .card-index-texto {
-    flex: 1.2;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
     padding: 30px;
@@ -114,7 +81,6 @@ section.portada-index {
 }
 
 .card-index-video {
-    flex: 1;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     padding: 20px;
@@ -139,7 +105,7 @@ h2.portada-titulo {
     margin-bottom: 12px;
     font-size: 26px;
 }
-    
+
 p.portada-baja {
     font-family: 'Lato', sans-serif;
     color: var(--hover);
@@ -157,15 +123,10 @@ p.portada-baja {
     border-radius: 10px;
 }
 
+/* ---------- FOOTER ---------- */
 footer.nav-footer {
     background-color: var(--fondo-barras);
     padding: 15px 30px;
-}
-
-.footer-contenedor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .footer-texto {

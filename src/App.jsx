@@ -17,4 +17,7 @@ export default function App() {
       <Route path="/contactanos" element={<Contactanos />} />
     </Routes>
   );
+  <div className="d-flex flex-column min-vh-100">
+  {/* Header, contenido y Footer */}
+</div>
 }

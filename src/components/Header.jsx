@@ -4,32 +4,54 @@ import { Link } from 'react-router-dom';
 export default function Header({ mostrarInicio = true }) {
   return (
     <header className="nav-header">
-      <nav className="nav-contenedor">
-        <div className="header-logo">
-          <img className="logo-img" src="/multimedia/logo pasteleria.png" alt="logo pasteleria" />
+      <nav className="navbar navbar-expand-lg">
+        <div className="container">
+          <div className="navbar-brand d-flex align-items-center">
+            <img
+              className="logo-img me-2"
+              src="/multimedia/logo pasteleria.png"
+              alt="logo pasteleria"
+              height="56"
+            />
+            <div>
+              <h1 className="titulo-header h4 mb-0">Pasteleria mil sabores</h1>
+              <p className="eslogan-header small mb-0 d-none d-md-block">
+                ¡Celebra la dulzura de la vida con Pastelería 1000 Sabores!
+              </p>
+            </div>
+          </div>
 
-          <div>
-            <h1 className="titulo-header">Pasteleria mil sabores</h1>
-            <p className="eslogan-header">¡Celebra la dulzura de la vida con Pastelería 1000 Sabores!</p>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menuPrincipal"
+            aria-controls="menuPrincipal"
+            aria-expanded="false"
+            aria-label="Mostrar menú"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="menuPrincipal">
+            <ul className="navbar-nav ms-auto">
+              {mostrarInicio && (
+                <li className="nav-item item-nav">
+                  <Link className="nav-link" to="/">Inicio</Link>
+                </li>
+              )}
+              <li className="nav-item item-nav">
+                <Link className="nav-link" to="/catalogo">Catalogo</Link>
+              </li>
+              <li className="nav-item item-nav">
+                <Link className="nav-link" to="/carrito">Carrito</Link>
+              </li>
+              <li className="nav-item item-nav">
+                <Link className="nav-link" to="/usuario/inicio-sesion">Usuario</Link>
+              </li>
+            </ul>
           </div>
         </div>
-
-        <ul className="navbar-nav">
-          {mostrarInicio && (
-            <li className="item-nav">
-              <Link to="/">Inicio</Link>
-            </li>
-          )}
-          <li className="item-nav">
-            <Link to="/catalogo">Catalogo</Link>
-          </li>
-          <li className="item-nav">
-            <Link to="/carrito">Carrito</Link>
-          </li>
-          <li className="item-nav">
-            <Link to="/usuario/inicio-sesion">Usuario</Link>
-          </li>
-        </ul>
       </nav>
     </header>
   );

@@ -94,118 +94,122 @@ export default function Carrito() {
       <Header />
 
       <main>
-        <section className="contenedor-principal">
+        <section className="contenedor-principal container py-4">
           <h2 className="portada-titulo">Tu Carrito de Compras</h2>
           <p className="portada-baja">
             Revisa tus productos seleccionados, ingresa tu cupón y confirma la compra.
           </p>
 
-          {/* Layout en 2 columnas */}
-          <div className="carrito-grid">
-            {/* Columna Izquierda: Tabla de productos */}
-            <div className="card-carrito">
-              <div className="contenedor-tabla">
-                <table className="tabla-carrito">
-                  <thead>
-                    <tr>
-                      <th>Producto</th>
-                      <th>Mensaje</th>
-                      <th>Precio</th>
-                      <th>Cantidad</th>
-                      <th>Subtotal</th>
-                      <th>Acción</th>
-                    </tr>
-                  </thead>
-                  <tbody id="itemsCarrito">
-                    {items.length === 0 ? (
+          <div className="row g-4 align-items-start">
+            {/* Columna izquierda: tabla de productos */}
+            <div className="col-12 col-lg-8">
+              <div className="card-carrito">
+                <div className="table-responsive">
+                  <table className="tabla-carrito table align-middle mb-0">
+                    <thead>
                       <tr>
-                        <td
-                          colSpan="6"
-                          className="carrito-vacio"
-                          style={{ textAlign: 'center', padding: '25px', color: '#777' }}
-                        >
-                          Tu carrito está vacío
-                        </td>
+                        <th>Producto</th>
+                        <th>Mensaje</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acción</th>
                       </tr>
-                    ) : (
-                      items.map((item, i) => (
-                        <tr key={`${item.codigo}|${item.mensaje}`}>
-                          <td className="prod-nombre">{item.nombre}</td>
-                          <td className="prod-mensaje">{item.mensaje ? `"${item.mensaje}"` : '-'}</td>
-                          <td className="prod-precio">{formatearCLP(item.precio)}</td>
-                          <td>
-                            <input
-                              type="number"
-                              value={item.cantidad}
-                              min="1"
-                              className="campo-cantidad"
-                              onChange={e => cambiarCantidad(i, e.target.value)}
-                            />
-                          </td>
-                          <td className="prod-subtotal">{formatearCLP(item.precio * item.cantidad)}</td>
-                          <td>
-                            <button type="button" className="btn-eliminar" onClick={() => eliminarItem(i)}>
-                              Eliminar
-                            </button>
+                    </thead>
+                    <tbody id="itemsCarrito">
+                      {items.length === 0 ? (
+                        <tr>
+                          <td colSpan="6" className="carrito-vacio text-center text-muted py-4">
+                            Tu carrito está vacío
                           </td>
                         </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
+                      ) : (
+                        items.map((item, i) => (
+                          <tr key={`${item.codigo}|${item.mensaje}`}>
+                            <td className="prod-nombre">{item.nombre}</td>
+                            <td className="prod-mensaje">{item.mensaje ? `"${item.mensaje}"` : '-'}</td>
+                            <td className="prod-precio">{formatearCLP(item.precio)}</td>
+                            <td>
+                              <input
+                                type="number"
+                                value={item.cantidad}
+                                min="1"
+                                className="campo-cantidad form-control form-control-sm"
+                                onChange={e => cambiarCantidad(i, e.target.value)}
+                              />
+                            </td>
+                            <td className="prod-subtotal">{formatearCLP(item.precio * item.cantidad)}</td>
+                            <td>
+                              <button
+                                type="button"
+                                className="btn-eliminar btn btn-sm"
+                                onClick={() => eliminarItem(i)}
+                              >
+                                Eliminar
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
-            {/* Columna Derecha: Cupón + Resumen */}
-            <div className="card-resumen">
-              <div className="bloque-cupon">
-                <h3 className="resumen-titulo">Código de Descuento</h3>
-                <p className="texto-cupon">Ingresa tu código promocional:</p>
-                <div className="cupon-box">
-                  <input
-                    type="text"
-                    id="codigoCupon"
-                    placeholder="Ej: FELICES50"
-                    value={codigoCupon}
-                    onChange={e => setCodigoCupon(e.target.value)}
-                  />
-                  <button type="button" id="btnAplicarCupon" onClick={aplicarCupon}>
-                    Aplicar
-                  </button>
-                </div>
-              </div>
-
-              <hr className="separador" />
-
-              <div className="resumen-pedido">
-                <h3 className="resumen-titulo">Resumen del Pedido</h3>
-
-                <div className="fila-resumen">
-                  <span>Subtotal:</span>
-                  <span id="subtotal">
-                    <strong>{formatearCLP(subtotalGeneral)}</strong>
-                  </span>
+            {/* Columna derecha: cupón + resumen */}
+            <div className="col-12 col-lg-4">
+              <div className="card-resumen">
+                <div className="bloque-cupon">
+                  <h3 className="resumen-titulo">Código de Descuento</h3>
+                  <p className="texto-cupon">Ingresa tu código promocional:</p>
+                  <div className="cupon-box input-group">
+                    <input
+                      type="text"
+                      id="codigoCupon"
+                      className="form-control"
+                      placeholder="Ej: FELICES50"
+                      value={codigoCupon}
+                      onChange={e => setCodigoCupon(e.target.value)}
+                    />
+                    <button type="button" id="btnAplicarCupon" className="btn" onClick={aplicarCupon}>
+                      Aplicar
+                    </button>
+                  </div>
                 </div>
 
-                <div className="fila-resumen">
-                  <span>Descuento:</span>
-                  <span id="descuento">
-                    <strong>{formatearCLP(montoDescuento)}</strong>
-                  </span>
-                </div>
+                <hr className="separador" />
 
-                <div className="fila-resumen fila-total">
-                  <span>Total a pagar:</span>
-                  <strong id="total">{formatearCLP(totalPagar)}</strong>
-                </div>
+                <div className="resumen-pedido">
+                  <h3 className="resumen-titulo">Resumen del Pedido</h3>
 
-                <div className="acciones-carrito">
-                  <button type="button" className="btn-confirmar" onClick={confirmarPedido}>
-                    Confirmar Pedido
-                  </button>
-                  <button type="button" className="btn-vaciar" onClick={vaciarCarrito}>
-                    Vaciar Carrito
-                  </button>
+                  <div className="fila-resumen d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">
+                      <strong>{formatearCLP(subtotalGeneral)}</strong>
+                    </span>
+                  </div>
+
+                  <div className="fila-resumen d-flex justify-content-between">
+                    <span>Descuento:</span>
+                    <span id="descuento">
+                      <strong>{formatearCLP(montoDescuento)}</strong>
+                    </span>
+                  </div>
+
+                  <div className="fila-resumen fila-total d-flex justify-content-between">
+                    <span>Total a pagar:</span>
+                    <strong id="total">{formatearCLP(totalPagar)}</strong>
+                  </div>
+
+                  <div className="acciones-carrito d-grid gap-2">
+                    <button type="button" className="btn-confirmar btn" onClick={confirmarPedido}>
+                      Confirmar Pedido
+                    </button>
+                    <button type="button" className="btn-vaciar btn" onClick={vaciarCarrito}>
+                      Vaciar Carrito
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
