@@ -5,6 +5,7 @@ import Footer from '../components/Footer.jsx';
 import useTitulo from '../utils/useTitulo.js';
 import { validarRut } from '../utils/validarRut.js';
 import estilos from '../styles/usuario.css?inline';
+import { crearUsuario } from '../data/usuarios.js';
 
 export default function Registro() {
   useTitulo('Registro - Pastelería 1000 Sabores');
@@ -32,14 +33,17 @@ export default function Registro() {
       alert('Las contraseñas no coinciden.');
       return;
     }
-    const usuario = {
-      nombre: form.nombre,
-      apellido: form.apellido,
-      rut: form.rut,
-      correo: form.correo,
-      contrasena: form.contrasena
-    };
-    localStorage.setItem('usuario', JSON.stringify(usuario));
+   const usuario = crearUsuario({
+     nombre: form.nombre,
+     apellido: form.apellido,
+     rut: form.rut,
+     correo: form.correo,
+     contrasena: form.contrasena
+   });
+   if (!usuario) {
+     alert('Ya existe un usuario con ese correo o RUT.');
+     return;
+   }
     alert('Registro realizado correctamente.');
     navigate('/usuario/inicio-sesion');
   };
