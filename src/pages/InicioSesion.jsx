@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import useTitulo from '../utils/useTitulo.js';
+import { obtenerUsuarioPorCorreo } from '../data/usuarios.js';
 import estilos from '../styles/usuario.css?inline';
 
 export default function InicioSesion() {
@@ -12,22 +13,22 @@ export default function InicioSesion() {
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
 
-  const handleSubmit = event => {
-    event.preventDefault();
+    const handleSubmit = event => {
+     event.preventDefault();
 
-    const usuarioGuardado = JSON.parse(localStorage.getItem('usuario'));
+     const usuarioGuardado = obtenerUsuarioPorCorreo(correo);
 
-    if (!usuarioGuardado) {
-      alert('No existe ningún usuario registrado.');
-      return;
-    }
-    if (correo === usuarioGuardado.correo && contrasena === usuarioGuardado.contrasena) {
-      alert('Inicio de sesión correcto.');
-      navigate('/');
-    } else {
-      alert('Correo o contraseña incorrectos.');
-    }
-  };
+     if (!usuarioGuardado) {
+       alert('No existe ningún usuario registrado con ese correo.');
+       return;
+     }
+     if (contrasena === usuarioGuardado.contrasena) {
+       alert('Inicio de sesión correcto.');
+       navigate('/');
+     } else {
+       alert('Correo o contraseña incorrectos.');
+     }
+   };
 
   return (
     <>
