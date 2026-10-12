@@ -3,7 +3,7 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import ProductoCard from '../components/ProductoCard.jsx';
 import useTitulo from '../utils/useTitulo.js';
-import { productos } from '../data/productos.js';
+import { obtenerProductos } from '../data/productos.js';
 import estilos from '../styles/catalogo.css?inline';
 
 const CATEGORIAS = [
@@ -25,7 +25,7 @@ export default function Catalogo() {
   const [busqueda, setBusqueda] = useState('');
 
   const texto = busqueda.toLowerCase();
-  const filtrados = productos.filter(p => {
+  const filtrados = obtenerProductos().filter(p => {
     const matchesCat = categoriaActual === 'Todas' || p.categoria === categoriaActual;
     const matchesText =
       p.nombre.toLowerCase().includes(texto) || p.descripcion.toLowerCase().includes(texto);
