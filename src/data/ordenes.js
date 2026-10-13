@@ -2,7 +2,7 @@ import { leerLista, guardarLista, siguienteId } from './almacen.js';
 
 const CLAVE = 'ms_ordenes';
 
-const ordenesIniciales = [];
+const ordenesIniciales = []; 
 
 export function obtenerOrdenes() {
   return leerLista(CLAVE, ordenesIniciales);
@@ -18,6 +18,7 @@ export function obtenerOrdenesPorUsuario(correo) {
   );
 }
 
+// CREATE: agrega una orden. 
 export function crearOrden(orden) {
   const lista = obtenerOrdenes();
   const id = siguienteId(lista);
@@ -35,6 +36,7 @@ export function crearOrden(orden) {
   return nueva;
 }
 
+// UPDATE: solo se puede cambiar el estado.
 export function actualizarEstadoOrden(id, estado) {
   const lista = obtenerOrdenes();
   const posicion = lista.findIndex(o => o.id === id);

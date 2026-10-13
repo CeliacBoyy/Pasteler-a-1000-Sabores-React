@@ -33,6 +33,7 @@ export function obtenerProductosPorCategoria(categoria) {
   return obtenerProductos().filter(p => p.categoria === categoria);
 }
 
+// READ: productos en oferta
 export function obtenerProductosEnOferta() {
   return obtenerProductos().filter(p => p.oferta === true);
 }
@@ -41,6 +42,7 @@ export function obtenerProductosCriticos() {
   return obtenerProductos().filter(p => p.stock <= p.stockCritico);
 }
 
+// CREATE: agrega un producto
 export function crearProducto(producto) {
   const lista = obtenerProductos();
   if (lista.some(p => p.codigo === producto.codigo)) return null;
@@ -51,6 +53,7 @@ export function crearProducto(producto) {
   return nuevo;
 }
 
+// UPDATE: cambia los campos indicados 
 export function actualizarProducto(codigo, datos) {
   const lista = obtenerProductos();
   const posicion = lista.findIndex(p => p.codigo === codigo);
@@ -61,6 +64,7 @@ export function actualizarProducto(codigo, datos) {
   return lista[posicion];
 }
 
+// DELETE: elimina el producto.
 export function eliminarProducto(codigo) {
   const lista = obtenerProductos();
   const restantes = lista.filter(p => p.codigo !== codigo);

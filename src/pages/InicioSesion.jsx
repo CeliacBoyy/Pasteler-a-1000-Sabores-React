@@ -4,6 +4,7 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import useTitulo from '../utils/useTitulo.js';
 import { obtenerUsuarioPorCorreo } from '../data/usuarios.js';
+import { iniciarSesion } from '../utils/sesion.js';
 import estilos from '../styles/usuario.css?inline';
 
 export default function InicioSesion() {
@@ -24,7 +25,12 @@ export default function InicioSesion() {
      }
      if (contrasena === usuarioGuardado.contrasena) {
        alert('Inicio de sesión correcto.');
-       navigate('/');
+       iniciarSesion(usuarioGuardado);
+       if (usuarioGuardado.rol === 'admin') {
+         navigate('/admin');
+       } else {
+         navigate('/');
+       }
      } else {
        alert('Correo o contraseña incorrectos.');
      }

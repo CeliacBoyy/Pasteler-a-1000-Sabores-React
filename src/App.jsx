@@ -5,6 +5,8 @@ import Carrito from './pages/Carrito.jsx';
 import InicioSesion from './pages/InicioSesion.jsx';
 import Registro from './pages/Registro.jsx';
 import Contactanos from './pages/Contactanos.jsx';
+import Dashboard from './pages/admin/Dashboard.jsx';
+import RutaAdmin from './components/RutaAdmin.jsx';
 
 export default function App() {
   return (
@@ -15,6 +17,7 @@ export default function App() {
       <Route path="/usuario/inicio-sesion" element={<InicioSesion />} />
       <Route path="/usuario/registro" element={<Registro />} />
       <Route path="/contactanos" element={<Contactanos />} />
+      <Route path="/admin" element={<RutaAdmin><Dashboard /></RutaAdmin>} />
     </Routes>
   );
   <div className="d-flex flex-column min-vh-100">
