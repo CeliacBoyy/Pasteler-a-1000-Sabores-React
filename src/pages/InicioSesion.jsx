@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import useTitulo from '../utils/useTitulo.js';
 import { obtenerUsuarioPorCorreo } from '../data/usuarios.js';
-import { iniciarSesion } from '../utils/sesion.js';
+import { iniciarSesion, esAdmin } from '../utils/sesion.js';
 import estilos from '../styles/usuario.css?inline';
 
 export default function InicioSesion() {
@@ -13,6 +13,10 @@ export default function InicioSesion() {
   const navigate = useNavigate();
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
+
+  if (esAdmin()) {
+    return <Navigate to="/admin" replace />;
+  }
 
     const handleSubmit = event => {
      event.preventDefault();

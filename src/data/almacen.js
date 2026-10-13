@@ -7,8 +7,9 @@ export function leerLista(clave, iniciales) {
     }
   } catch (e) {
   }
-  guardarLista(clave, iniciales);
-  return iniciales;
+  const copia = JSON.parse(JSON.stringify(iniciales));
+  guardarLista(clave, copia);
+  return copia;
 }
 
 export function guardarLista(clave, lista) {

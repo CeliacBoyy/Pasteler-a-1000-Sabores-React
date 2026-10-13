@@ -1,7 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { obtenerSesion, esAdmin, cerrarSesion } from '../utils/sesion.js';
 
 // mostrarInicio=false replica la página de inicio original, que no tenía el enlace "Inicio"
 export default function Header({ mostrarInicio = true }) {
+  const navigate = useNavigate();
+  const sesion = obtenerSesion();
+  const admin = esAdmin();
+
+  const handleCerrarSesion = () => {
+    cerrarSesion();
+    navigate('/usuario/inicio-sesion');
+  };
+
   return (
     <header className="nav-header">
       <nav className="navbar navbar-expand-lg">
@@ -46,9 +56,27 @@ export default function Header({ mostrarInicio = true }) {
               <li className="nav-item item-nav">
                 <Link className="nav-link" to="/carrito">Carrito</Link>
               </li>
-              <li className="nav-item item-nav">
-                <Link className="nav-link" to="/usuario/inicio-sesion">Usuario</Link>
-              </li>
+              {sesion ? (
+                <>
+                  {admin && (
+                    <li className="nav-item item-nav">
+                      <Link className="nav-link" to="/admin">Panel admin</Link>
+                    </li>
+                  )}
+                  <li className="nav-item item-nav">
+                    <span className="nav-link">Hola, {sesion.nombre}</span>
+                  </li>
+                  <li className="nav-item item-nav">
+                    <button type="button" className="btn btn-link nav-link" onClick={handleCerrarSesion}>
+                      Cerrar sesión
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <li className="nav-item item-nav">
+                  <Link className="nav-link" to="/usuario/inicio-sesion">Usuario</Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>
